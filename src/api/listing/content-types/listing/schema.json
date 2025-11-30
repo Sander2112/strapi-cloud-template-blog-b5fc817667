@@ -1,0 +1,89 @@
+{
+  "kind": "collectionType",
+  "collectionName": "listings",
+  "info": {
+    "singularName": "listing",
+    "pluralName": "listings",
+    "displayName": "Listing"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "geuze_lambiek",
+        "bier",
+        "wijn",
+        "champagne_mousserend",
+        "sterke_drank",
+        "collectable"
+      ]
+    },
+    "brand": {
+      "type": "string"
+    },
+    "producer": {
+      "type": "string"
+    },
+    "vintage": {
+      "type": "integer"
+    },
+    "volume_ml": {
+      "type": "integer"
+    },
+    "alcohol_percentage": {
+      "type": "decimal"
+    },
+    "bottle_condition": {
+      "type": "enumeration",
+      "enum": ["mint", "goed", "ok", "beschadigd"]
+    },
+    "packaging_condition": {
+      "type": "enumeration",
+      "enum": ["geen", "mint", "goed", "beschadigd"]
+    },
+    "price_type": {
+      "type": "enumeration",
+      "enum": ["fixed", "auction"],
+      "default": "fixed"
+    },
+    "fixed_price_eur": {
+      "type": "decimal"
+    },
+    "min_bid_eur": {
+      "type": "decimal"
+    },
+    "buy_now_price_eur": {
+      "type": "decimal"
+    },
+    "location": {
+      "type": "string"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": ["draft", "active", "reserved", "sold", "removed"],
+      "default": "draft"
+    },
+    "photos": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": ["images"]
+    },
+    "seller": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "listings"
+    }
+  }
+}
